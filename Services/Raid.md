@@ -47,8 +47,9 @@
 #### 1.5 向 md0中添加 sdf ：
     # mdadm --manage /dev/md0 --add  /dev/sdf
     mdadm: addes /dev/sdf 
-    
-#### 1.6 Raid5 扩容
+
+### 2、扩容
+#### 2.1 Raid5 扩容
     # raid5的Grow模式， -n 代表RAID 真正成员的个数
     # 假设RAID5真正成员是3个，后来我们又添加了一个备用成员/dev/sdf进去
     # 第一步：添加磁盘
