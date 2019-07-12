@@ -3,6 +3,15 @@
 
 
 ### 1、更换坏损磁盘
+#### 更换磁盘步骤
+    
+    1、标记为failed：  mdadm  /dev/md0  -f  磁盘
+    2、删除failed磁盘：mdadm  /dev/md0  -r  磁盘
+    3、拔出failed的物理磁盘，并插入新的物理磁盘
+    4、格式化新盘: mkfs.ext4  新磁盘
+    5、mdadm 添加新盘
+    
+    
 #### 1.1 查看raid信息
 
     # cat /proc/mdstat 
@@ -34,3 +43,18 @@
           9766917440 blocks super 1.2 level 5, 64k chunk, algorithm 2 [6/5] [UUUU_U]
           bitmap: 4/4 pages [16KB], 262144KB chunk
       
+      
+#### 1.5 向 md0中添加 sdf ：
+    # mdadm --manage /dev/md0 --add  /dev/sdf
+    mdadm: addes /dev/sdf 
+    
+#### 1.6 Raid5 扩容
+    # raid5的Grow模式， -n 代表RAID 真正成员的个数
+    # 假设RAID5真正成员是3个，后来我们又添加了一个备用成员/dev/sdf进去
+    # 第一步：添加磁盘
+    # 第二部
+    # 假设RAID5真正成员是3个，后来我们又添加了一个备用成员/dev/sdf进
+    mdadm -G /dev/md0  -n4   #这样就把热备的分区添加到了raid成员中了，容量也扩大了哦
+
+
+    
