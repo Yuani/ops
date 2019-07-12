@@ -5,11 +5,11 @@
 ### 1、更换坏损磁盘
 #### 更换磁盘步骤
     
-    1、标记为failed：  mdadm  /dev/md0  -f  磁盘
-    2、删除failed磁盘：mdadm  /dev/md0  -r  磁盘
-    3、拔出failed的物理磁盘，并插入新的物理磁盘
-    4、格式化新盘: mkfs.ext4  新磁盘
-    5、mdadm 添加新盘
+    第一步：标记为failed：  mdadm  /dev/md0  -f  磁盘
+    第二步：删除failed磁盘：mdadm  /dev/md0  -r  磁盘
+    第三步：拔出failed的物理磁盘，并插入新的物理磁盘
+    第四步：格式化新盘: mkfs.ext4  新磁盘
+    第五步：mdadm 添加新盘：mdadm  /dev/md0  -a  磁盘
     
     
 #### 1.1 查看raid信息
