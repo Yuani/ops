@@ -68,10 +68,20 @@
     }
 
 
-### 7、proxy 多端口代理
+### 7、proxy 多端口代理:下面两个方法效果等同
+方案1:
+
     location ^~ /8081/ {
               rewrite /8081/(.*)  /$1   break;
               proxy_pass http://100.88.64.171:8081;
               proxy_redirect / /8081/;
             }
+ 
+ 方案2: 
+ 
+    location ^~ /8081/ {
+              proxy_pass http://100.88.64.171:8081/;
+              proxy_redirect / /8081/;
+            }
+            
 
