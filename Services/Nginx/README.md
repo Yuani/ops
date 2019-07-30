@@ -66,3 +66,12 @@
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;  
         include fastcgi_params;  
     }
+
+
+### 7、proxy 多端口代理
+    location ^~ /8081/ {
+              rewrite /8081/(.*)  /$1   break;
+              proxy_pass http://100.88.64.171:8081;
+              proxy_redirect / /8081/;
+            }
+
