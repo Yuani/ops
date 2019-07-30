@@ -73,14 +73,14 @@
 
     location ^~ /8081/ {
               rewrite /8081/(.*)  /$1   break;
-              proxy_pass http://100.88.64.171:8081;
+              proxy_pass http://127.0.0.1:8081;
               proxy_redirect / /8081/;
             }
  
  方案2: 
  
     location ^~ /8081/ {
-              proxy_pass http://100.88.64.171:8081/;
+              proxy_pass http://127.0.0.1:8081/;
               proxy_redirect / /8081/;
             }
             
