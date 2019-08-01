@@ -15,7 +15,7 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
     HostKey /etc/ssh/ssh_host_ecdsa_key
     SyslogFacility AUTHPRIV
     AuthorizedKeysFile	.ssh/authorized_keys
-    PasswordAuthentication no
+    PasswordAuthentication yes
     ChallengeResponseAuthentication no
     GSSAPIAuthentication yes
     GSSAPICleanupCredentials yes
