@@ -84,10 +84,19 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
     chmod 700 $chrootDir/$NAME/.ssh
     touch $chrootDir/$NAME/.ssh/authorized_keys
     chmod 400 $chrootDir/$NAME/.ssh/authorized_keys
+    # set the default manager key
+    # cat your_sftp_admin.pub >> $chrootDir/$NAME/.ssh/authorized_keys
+    
+    
 
+    echo "init the passwd: "
+    PASSWORD=$(echo $(date +%s) |sha256sum|base64 |head -c 10)
+    echo $PASSWORD | passwd --stdin $NAME
+    echo "Set Account not  Expiration"
+    chage -m 0 -M 99999 -I -1 -E -1 $NAME
 
     log "INFO" ": Please add public keys to  $chrootDir/$NAME/.ssh/authorized_keys" 
-    log "INFO" ": Create SUCCESS!"
+    log "INFO" ": Create SUCCESS!,the default passwd is : $PASSWORD"
 
 ##### 脚本执行结果：
 
