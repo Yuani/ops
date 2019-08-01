@@ -37,6 +37,9 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
       AllowTcpForwarding no
       ForceCommand internal-sftp
       ChrootDirectory /data/sftp/%u
+    # 指定用户关闭密码认证
+    # Match User sftp_user_name
+	#    PasswordAuthentication no
   
   限制sftp用户的家目录/data/sftp/
 
