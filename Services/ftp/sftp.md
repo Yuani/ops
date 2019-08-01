@@ -26,6 +26,7 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
     PidFile /usr/local/services/sftp-1.0/log/sftp.pid
     Banner none
     MaxStartups 30:10:60
+    #MaxSessions 10
     AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
     AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
     AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
@@ -37,8 +38,9 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
       ForceCommand internal-sftp
       ChrootDirectory /data/sftp/%u
   
-  限制sftp用户的家目录/data/sftp/ 
-  
+  限制sftp用户的家目录/data/sftp/
+
+
 #### 2、启动sftp服务 : /usr/sbin/sshd  -f sftp.conf
   
   
@@ -105,3 +107,19 @@ ERR1  fatal: bad ownership or modes for chroot directory
         chown root.root $chrootDir/$NAME
         chmod 755 $chrootDir/$NAME
         chown $NAME:$GROUP  $chrootDir/$NAME/upload
+
+
+ERR2:Disconnect: connection closed by remote host
+    
+    原因：连接数不够
+    解决：修改sftpd.conf 中的配置项：MaxStartups
+        MaxStartups 30:10:60  # 30:起始最大连接数30个， 10:超过30个的连接数时，会有10%的概率丢弃， 60:允许的最大连接数
+
+ERR3: Too many authentication failures for test
+    
+    原因：认证失败次数太多
+    解决：
+    方法1: 调整 MaxAuthTries 的值，需要重启sshd
+    方法2: 重置认证失败统计： pam_tally --reset --user <USERNAME> 
+    
+  
