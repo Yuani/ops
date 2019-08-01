@@ -25,6 +25,7 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
     UseDNS no
     PidFile /usr/local/services/sftp-1.0/log/sftp.pid
     Banner none
+    MaxStartups 30:10:60
     AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
     AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
     AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
