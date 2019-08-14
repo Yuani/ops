@@ -1,0 +1,14 @@
+国外安全研究员公开了对 HTTP Desync Attacks 的攻击利用手法，影响使用CDN、反向代理、负载均衡等组件的WEB服务
+
+技术详情】
+国外安全研究员于8月7日 BlackHat 国际安全会议上公开了对 HTTP Desync Attacks 的新攻击利用手法；经安平情报侧分析，其利用 Content-Length 和 Transfer-Encoding: chunked 等HTTP请求头在转发解析时产生的差异（业务场景如CDN、反向代理、负载均衡等），可导致随机用户的请求响应产生错乱，经实际分析测试，可在特定场景造成安全风险。
+ 
+【解决方案】
+经分析，业务可通过以下三种解决方案防御该问题，请业务侧根据自身的业务场景进行处置：
+1、禁用 HTTP分块编码(Transfer-Encoding: chunked)；
+2、使用HTTP/2等对请求边界有清晰定义的协议进行后端连接；
+3、确保流量转发服务及后端Web应用服务对HTTP请求包的解析逻辑完全一致。
+
+【附】国外安全研究员公开的Paper及PPT：
+    1、https://portswigger.net/blog/http-desync-attacks-request-smuggling-reborn
+    2、https://i.blackhat.com/USA-19/Wednesday/us-19-Kettle-HTTP-Desync-Attacks-Smashing-Into-The-Cell-Next-Door.pdf
