@@ -38,7 +38,7 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
       ForceCommand internal-sftp
       ChrootDirectory /data/sftp/%u
     # 指定用户关闭密码认证
-    # Match User sftp_user_name
+    # Match Group sftp_no_password
 	#    PasswordAuthentication no
   
   限制sftp用户的家目录/data/sftp/
@@ -110,6 +110,11 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
     2018-08-16 17:14:44 INFO : Create SUCCESS!
 
 
+#### 其他
+SSH2 public key convert to openSSH Public key
+
+	ssh-keyge -i  -f dance_all_day.key
+	
 
 #### 常见故障处理
 ERR1  fatal: bad ownership or modes for chroot directory
