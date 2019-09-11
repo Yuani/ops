@@ -45,6 +45,13 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
 
 
 #### 2、启动sftp服务 : /usr/sbin/sshd  -f sftp.conf
+连接命令：
+
+	use key authoriation
+	CMD1: sftp -i private_key -P 65000 sftp_user@sftp_server_address
+
+	use password authoriation
+	CMD1: sftp   -P 65000 sftp_user@sftp_server_address
   
   
 #### 3、新增用户脚本
@@ -113,7 +120,7 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
 #### 其他
 SSH2 public key convert to openSSH Public key
 
-	ssh-keyge -i  -f dance_all_day.key
+	ssh-keygen -i  -f dance_all_day.key
 	
 
 #### 常见故障处理
