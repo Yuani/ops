@@ -17,8 +17,8 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
     AuthorizedKeysFile	.ssh/authorized_keys
     PasswordAuthentication yes
     ChallengeResponseAuthentication no
-    GSSAPIAuthentication yes
-    GSSAPICleanupCredentials yes
+    #GSSAPIAuthentication yes
+    #GSSAPICleanupCredentials yes
     UsePAM yes
     X11Forwarding yes
     UsePrivilegeSeparation sandbox		# Default for new installations.
@@ -27,6 +27,8 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
     Banner none
     MaxStartups 30:10:60
     #MaxSessions 10
+    ClientAliveInterval 60
+    ClientAliveCountMax 3
     AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
     AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
     AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
@@ -38,8 +40,8 @@ FTP 是一种不安全的协议，应当只有在特定的情况下或者你信�
       ForceCommand internal-sftp
       ChrootDirectory /data/sftp/%u
     # 指定用户关闭密码认证
-    # Match Group sftp_no_password
-	#    PasswordAuthentication no
+    Match Group sftp_no_password
+	PasswordAuthentication no
   
   限制sftp用户的家目录/data/sftp/
 
