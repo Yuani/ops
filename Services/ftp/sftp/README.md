@@ -27,3 +27,5 @@ crontab -e
     
 ### 4、其他用户管理
 使用管理账号sftpadmin 连接
+
+更新/upload/users.conf，每个账号一行： 用户名：密码
