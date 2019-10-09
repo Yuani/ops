@@ -54,7 +54,7 @@ do
         else
                 log 'INFO' "Add new sftp user: $NAME"
                 sh   ${CMD_createUser} $NAME $PASSWD
-                test $(grep -w $NAME /etc/script_user | wc -l ) -gt 0 || echo $NAME >> /etc/script_user 
+                #test $(grep -w $NAME /etc/script_user | wc -l ) -gt 0 || echo $NAME >> /etc/script_user 
         fi
 
 done 
@@ -73,7 +73,7 @@ do
         if [ $(grep $NAME $users | wc -l ) -eq 0 ];then
                 log "WARN" " del user $NAME"
                 userdel  $NAME
-                sed -i "/$NAME/d"  /etc/script_user
+                #sed -i "/$NAME/d"  /etc/script_user
         fi
 
 done
