@@ -24,7 +24,7 @@ metric={
 'Threads_running':0,
 'Bytes_sent':0,
 'Bytes_received':0,
-'slave':1,
+'subordinate':1,
 'alive':0,
 }
 
@@ -65,13 +65,13 @@ def get_mysqladmin_extended_status():
 	if 'alive' in ping: metric['alive']=1
 	data.append({'endpoint':endpoint,'timstamp':long(ts),'step': step,'metric':'mysql.alive','value':long(metric['alive']),'tags':"",'counterType':'GAUGE'})
 
-	### slave status monitor
-	#slaveMetric=['Slave_IO_Running','Slave_SQL_Running','Seconds_Behind_Master']
-	#cmd='%s %s -e  "show slave status\G"' % (mysql, db_auth)
+	### subordinate status monitor
+	#subordinateMetric=['Subordinate_IO_Running','Subordinate_SQL_Running','Seconds_Behind_Main']
+	#cmd='%s %s -e  "show subordinate status\G"' % (mysql, db_auth)
 	#sstat=commands.getoutput(cmd).split('\n')[1:]
 	#if sstat[11].split(':')[1].strip() == 'No' or sstat[12].split(':')[1].strip() == 'No':
-	#	metric['slave']=0
-	#data.append({'endpoint':endpoint,'timstamp':long(ts),'step': step,'metric':'mysql.slave','value':long(metric['slave']),'tags':"",'counterType':'GAUGE'})
+	#	metric['subordinate']=0
+	#data.append({'endpoint':endpoint,'timstamp':long(ts),'step': step,'metric':'mysql.subordinate','value':long(metric['subordinate']),'tags':"",'counterType':'GAUGE'})
 	#data.append({'endpoint':endpoint,'timstamp':long(ts),'step': step,'metric':'mysql.behind','value':long(sstat[33].split(':')[1].strip()),'tags':"",'counterType':'GAUGE'})
 
 	print json.dumps(data,indent=4)

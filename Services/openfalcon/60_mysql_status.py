@@ -30,7 +30,7 @@ StrDict={
 	'not':0
 }
 
-monitor_blackList=['Ssl_','Performance_schema','Com_show_','Com_drop_','Com_create_','Com_alter_','Binlog_','Slave_','Tc_log_']
+monitor_blackList=['Ssl_','Performance_schema','Com_show_','Com_drop_','Com_create_','Com_alter_','Binlog_','Subordinate_','Tc_log_']
 monitor_whiteList=["Bytes_received",
 "Bytes_sent",
 "Threads_connected", 
@@ -79,7 +79,7 @@ DataType ={
 
 	"Binlog_event_count": DELTA_PS,
 	"Binlog_number":      DELTA_PS,
-	"Slave_count":        DELTA_PS,
+	"Subordinate_count":        DELTA_PS,
 
 	"Com_admin_commands":        DELTA_PS,
 	"Com_assign_to_keycache":    DELTA_PS,
@@ -96,7 +96,7 @@ DataType ={
 	"Com_binlog":                DELTA_PS,
 	"Com_call_procedure":        DELTA_PS,
 	"Com_change_db":             DELTA_PS,
-	"Com_change_master":         DELTA_PS,
+	"Com_change_main":         DELTA_PS,
 	"Com_check":                 DELTA_PS,
 	"Com_checksum":              DELTA_PS,
 	"Com_commit":                DELTA_PS,
@@ -182,7 +182,7 @@ DataType ={
 	"Com_show_function_status":  DELTA_PS,
 	"Com_show_grants":           DELTA_PS,
 	"Com_show_keys":             DELTA_PS,
-	"Com_show_master_status":    DELTA_PS,
+	"Com_show_main_status":    DELTA_PS,
 	"Com_show_open_tables":      DELTA_PS,
 	"Com_show_plugins":          DELTA_PS,
 	"Com_show_privileges":       DELTA_PS,
@@ -191,8 +191,8 @@ DataType ={
 	"Com_show_profile":          DELTA_PS,
 	"Com_show_profiles":         DELTA_PS,
 	"Com_show_relaylog_events":  DELTA_PS,
-	"Com_show_slave_hosts":      DELTA_PS,
-	"Com_show_slave_status":     DELTA_PS,
+	"Com_show_subordinate_hosts":      DELTA_PS,
+	"Com_show_subordinate_status":     DELTA_PS,
 	"Com_show_status":           DELTA_PS,
 	"Com_show_storage_engines":  DELTA_PS,
 	"Com_show_table_status":     DELTA_PS,
@@ -200,8 +200,8 @@ DataType ={
 	"Com_show_triggers":         DELTA_PS,
 	"Com_show_variables":        DELTA_PS,
 	"Com_show_warnings":         DELTA_PS,
-	"Com_slave_start":           DELTA_PS,
-	"Com_slave_stop":            DELTA_PS,
+	"Com_subordinate_start":           DELTA_PS,
+	"Com_subordinate_stop":            DELTA_PS,
 	"Com_stmt_close":            DELTA_PS,
 	"Com_stmt_execute":          DELTA_PS,
 	"Com_stmt_fetch":            DELTA_PS,
